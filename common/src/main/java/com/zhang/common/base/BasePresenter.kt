@@ -1,5 +1,7 @@
 package com.zhang.common.base
 
+import android.arch.lifecycle.LifecycleOwner
+import android.arch.lifecycle.OnLifecycleEvent
 import com.zhang.common.baserx.RxManager
 
 /**
@@ -7,7 +9,7 @@ import com.zhang.common.baserx.RxManager
  * DATA: 2018/7/22 .
  * Description : 基类Presenter
  */
-abstract class BasePresenter<T : BaseView, E: BaseModel> {
+open class BasePresenter<T : BaseView, E: BaseModel>: IPresenter {
 
     var mModel: E? = null
     var mView: T? = null
@@ -16,9 +18,18 @@ abstract class BasePresenter<T : BaseView, E: BaseModel> {
     fun setVM(v: T, m: E) {
         this.mModel = m
         this.mView = v
-        this.onStart()
     }
 
-    open fun onStart() {}
-    open fun onDestroy(){mRxManage.clear()}
+    override fun onCreate(owner: LifecycleOwner) {
+        println("LifeCycle--- OnCreate")
+    }
+
+    override fun onDestory(owner: LifecycleOwner) {
+        mRxManage.clear()
+        println("LifeCycle--- onDestory")
+    }
+
+    override fun onLifecycleChanged(owner: LifecycleOwner, event: OnLifecycleEvent) {
+    }
+
 }

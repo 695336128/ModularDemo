@@ -1,5 +1,6 @@
 package com.zhang.common.base
 
+import android.arch.lifecycle.LifecycleObserver
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -28,6 +29,7 @@ abstract class BaseFragment<T: BasePresenter<*,*>,E: BaseModel> : Fragment() {
         mModel = TUtil.getT(this,1)
         initPresenter()
         initView()
+        mPresenter?.let { lifecycle.addObserver(mPresenter as LifecycleObserver) }
         return rootView
     }
 
@@ -96,13 +98,6 @@ abstract class BaseFragment<T: BasePresenter<*,*>,E: BaseModel> : Fragment() {
      */
     fun showToast(text: String) {
         ToastUtil.showToast(activity!!,text)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        if (mPresenter != null){
-            mPresenter!!.onDestroy()
-        }
     }
 
 }

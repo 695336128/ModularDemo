@@ -25,6 +25,8 @@ import zt.zhang.test.R
 @Route(path = ARouterConfig.TEST_ACTIVITY)
 class TestActivity : BaseActivity<TestPresenter, TestModel>(), TestContract.View {
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

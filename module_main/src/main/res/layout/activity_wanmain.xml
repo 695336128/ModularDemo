@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.feature_main.WanMainActivity">
+
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/main_bottom_navigation_rg"
+        android:background="@android:color/transparent"
+        android:elevation="10dp" />
+
+    <RadioGroup
+
+        android:id="@+id/main_bottom_navigation_rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="#aaefefef"
+        android:padding="5dp">
+
+        <RadioButton
+            android:id="@+id/rbHome"
+            style="@style/MainTabStyle"
+            android:checked="true"
+            android:drawableTop="@drawable/selector_main_tab_image"
+            android:text="@string/home" />
+
+        <RadioButton
+            android:id="@+id/rbNavigation"
+            style="@style/MainTabStyle"
+            android:drawableTop="@drawable/selector_system_tab_image"
+            android:text="@string/system" />
+
+        <RadioButton
+            android:id="@+id/rbProject"
+            style="@style/MainTabStyle"
+            android:drawableTop="@drawable/selector_project_tab_image"
+            android:text="@string/project" />
+
+        <RadioButton
+            android:id="@+id/rbMe"
+            style="@style/MainTabStyle"
+            android:drawableTop="@drawable/selector_me_tab_image"
+            android:text="@string/me" />
+
+
+    </RadioGroup>
+
+</RelativeLayout>

@@ -1,5 +1,6 @@
 package com.zhang.common.base
 
+import android.arch.lifecycle.LifecycleObserver
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
@@ -34,6 +35,7 @@ abstract class BaseActivity<T : BasePresenter<*, *>, E : BaseModel> : AppCompatA
         mModel = TUtil.getT(this, 1)
         this.initPresenter()
         this.initView()
+        mPresenter?.let { lifecycle.addObserver(mPresenter as LifecycleObserver) }
     }
 
     /**
@@ -137,9 +139,6 @@ abstract class BaseActivity<T : BasePresenter<*, *>, E : BaseModel> : AppCompatA
 
     override fun onDestroy() {
         super.onDestroy()
-        if (mPresenter != null) {
-            mPresenter?.onDestroy()
-        }
         AppManager.instance.removeActivity(this)
     }
 
