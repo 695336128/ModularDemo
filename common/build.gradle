@@ -49,9 +49,9 @@ dependencies {
     api rootProject.ext.dependencies["arouter_api"]
     api rootProject.ext.dependencies["arouter_annotation"]
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-//    api rootProject.ext.dependencies["rxlifecycle"]
-//    api rootProject.ext.dependencies["rxlifecycle-components"]
-//    api rootProject.ext.dependencies["rxlifecycle-android-lifecycle-kotlin"]
+    api rootProject.ext.dependencies["rxlifecycle"]
+    api rootProject.ext.dependencies["rxlifecycle-components"]
+    api rootProject.ext.dependencies["rxlifecycle-android-lifecycle-kotlin"]
 }
 repositories {
     mavenCentral()

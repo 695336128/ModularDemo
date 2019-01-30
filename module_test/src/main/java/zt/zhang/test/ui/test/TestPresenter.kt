@@ -17,7 +17,7 @@ class TestPresenter : TestContract.Presenter() {
         mModel?.loadData()?.subscribe(object : RxObserver<TestBean>(){
             override fun doOnSubscribe(d: Disposable) {
                 mView?.showLoading()
-                mRxManage.add(d)
+                addDispose(d)
             }
 
             override fun doOnNext(t: TestBean) {
